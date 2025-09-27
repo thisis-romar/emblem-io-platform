@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Strategic Partnership Assessment - Q1 2026 | emblem.io</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+    
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: #1a1a1a;
+      background-color: #f8f9fa;
+    }
+    
+    .email-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    }
+    
+    /* Header Section */
+    .header-banner {
+      background: linear-gradient(135deg, #d4af37 0%, #00d4ff 100%);
+      padding: 12px 0;
+      text-align: center;
+    }
+    
+    .header-banner p {
+      font-family: 'Outfit', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: #000;
+      margin: 0;
+    }
+    
+    .slots-remaining {
+      color: #dc3545;
+      font-weight: 700;
+    }
+    
+    /* Logo Section */
+    .logo-section {
+      background: #1a1a1a;
+      padding: 24px;
+      text-align: center;
+    }
+    
+    .logo {
+      font-family: 'Outfit', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #d4af37;
+      letter-spacing: -0.02em;
+    }
+    
+    /* Hero Section - Gmail Compatible */
+    .hero-section {
+      background-color: #1a1a1a;
+      width: 100%;
+    }
+    
+    .hero-bg-cell {
+      background-image: url('https://lh3.googleusercontent.com/d/1SWQNZHNJZFBaOGk1CNjC3RxD71714RnL=w800-h400');
+      background-color: #1a1a1a;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      padding: 60px 30px;
+      text-align: center;
+      color: #fff;
+    }
+    
+    .hero-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #d4af37 0%, #00d4ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hero-subtitle {
+      font-size: 18px;
+      color: #b0b0b0;
+      margin-bottom: 24px;
+      font-weight: 500;
+    }
+    
+    .hero-description {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #e0e0e0;
+      margin-bottom: 32px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    /* Stats Section */
+    .stats-section {
+      background: #f8f9fa;
+      padding: 40px 30px;
+    }
+    
+    .stats-grid {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 20px;
+      text-align: center;
+    }
+    
+    .stat-item {
+      flex: 1;
+      min-width: 160px;
+    }
+    
+    .stat-number {
+      font-family: 'Outfit', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: #d4af37;
+      display: block;
+    }
+    
+    .stat-label {
+      font-size: 14px;
+      color: #666;
+      font-weight: 500;
+    }
+    
+    /* Benefits Section */
+    .benefits-section {
+      padding: 40px 30px;
+      background: #fff;
+    }
+    
+    .section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 32px;
+      color: #1a1a1a;
+    }
+    
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+    }
+    
+    .benefit-item {
+      padding: 24px;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-radius: 12px;
+      border-left: 4px solid #d4af37;
+    }
+    
+    .benefit-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin-bottom: 8px;
+    }
+    
+    .benefit-description {
+      font-size: 14px;
+      color: #666;
+      line-height: 1.5;
+    }
+    
+    /* Social Proof Section */
+    .social-proof {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+      padding: 40px 30px;
+      text-align: center;
+      color: #fff;
+    }
+    
+    .social-proof-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #d4af37;
+    }
+    
+    .client-badges {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    
+    .client-badge {
+      padding: 6px 14px;
+      background: rgba(212,175,55,0.2);
+      border: 1px solid rgba(212,175,55,0.4);
+      border-radius: 20px;
+      font-size: 12px;
+      color: #d4af37;
+      font-weight: 500;
+    }
+    
+    .microsoft-badge {
+      background: rgba(0,212,255,0.2);
+      border-color: rgba(0,212,255,0.4);
+      color: #00d4ff;
+    }
+    
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(135deg, #d4af37 0%, #00d4ff 100%);
+      padding: 50px 30px;
+      text-align: center;
+    }
+    
+    .cta-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #000;
+      margin-bottom: 16px;
+    }
+    
+    .cta-description {
+      font-size: 16px;
+      color: #1a1a1a;
+      margin-bottom: 24px;
+      font-weight: 500;
+    }
+    
+    .cta-urgency {
+      font-size: 14px;
+      color: #dc3545;
+      font-weight: 700;
+      margin-bottom: 32px;
+      background: rgba(255,255,255,0.9);
+      padding: 12px 20px;
+      border-radius: 25px;
+      display: inline-block;
+    }
+    
+    .cta-button {
+      display: inline-block;
+      padding: 16px 32px;
+      background: #1a1a1a;
+      color: #fff;
+      text-decoration: none;
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+    
+    .cta-button:hover {
+      background: #333;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 35px rgba(0,0,0,0.4);
+    }
+    
+    .cta-arrow {
+      margin-left: 8px;
+      font-size: 16px;
+    }
+    
+    /* Footer */
+    .footer {
+      background: #1a1a1a;
+      padding: 30px;
+      text-align: center;
+      color: #b0b0b0;
+    }
+    
+    .footer-text {
+      font-size: 12px;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+    
+    .footer-link {
+      color: #d4af37;
+      text-decoration: none;
+    }
+    
+    /* Mobile Responsive */
+    @media (max-width: 480px) {
+      .email-container {
+        margin: 0;
+      }
+      
+      .hero-title {
+        font-size: 24px;
+      }
+      
+      .hero-subtitle {
+        font-size: 16px;
+      }
+      
+      .stats-grid {
+        flex-direction: column;
+        gap: 16px;
+      }
+      
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .cta-title {
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="email-container">
+    
+    <!-- Header Banner -->
+    <div class="header-banner">
+      <p>🚨 Q1 2026 Strategic Partnership Program - Limited to 8 Mid-Sized Agencies | <span class="slots-remaining">6 Slots Remaining</span> | Applications Close January 31st</p>
+    </div>
+    
+    <!-- Logo Section -->
+    <div class="logo-section">
+      <div class="logo">emblem.io</div>
+    </div>
+    
+    <!-- Hero Section - Gmail Compatible with Google Drive Background -->
+    <table class="hero-section" role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+      <tr>
+        <td class="hero-bg-cell" align="center" valign="middle" style="background-image: url('https://lh3.googleusercontent.com/d/1SWQNZHNJZFBaOGk1CNjC3RxD71714RnL=w800-h400'); background-color: #1a1a1a; background-size: cover; background-position: center; background-repeat: no-repeat; padding: 60px 30px; text-align: center; color: #fff;">
+          <!--[if gte mso 9]>
+          <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="width:600px; height:400px;">
+            <v:fill type="frame" src="https://lh3.googleusercontent.com/d/1SWQNZHNJZFBaOGk1CNjC3RxD71714RnL=w800-h400" />
+            <v:textbox style="mso-fit-shape-to-text:true" inset="0,0,0,0">
+          <![endif]-->
+          <div style="background: linear-gradient(135deg, rgba(26,26,26,0.95) 0%, rgba(0,0,0,0.90) 100%); padding: 20px; border-radius: 8px;">
+            <h1 class="hero-title" style="font-family: 'Outfit', sans-serif; font-size: 32px; font-weight: 800; line-height: 1.2; margin-bottom: 16px; background: linear-gradient(135deg, #d4af37 0%, #00d4ff 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; color: #d4af37; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">
+              Eliminate AI Inconsistency.<br>Scale Quality Output.<br>Achieve 3.7x ROI.
+            </h1>
+            <p class="hero-subtitle" style="font-size: 18px; color: #4fc3f7; margin-bottom: 24px; font-weight: 600; text-shadow: 1px 1px 2px rgba(0,0,0,0.7);">
+              Production-ready MCP orchestration for multimedia generation at scale
+            </p>
+            <p class="hero-description" style="font-size: 16px; line-height: 1.6; color: #e0e0e0; margin-bottom: 32px; max-width: 480px; margin-left: auto; margin-right: auto; text-shadow: 1px 1px 2px rgba(0,0,0,0.6);">
+              Your agency spends 40% of project time on AI rework cycles. Our enterprise platform integrates ChatGPT, Claude, Midjourney, and 150+ production APIs through Microsoft's Model Context Protocol. No more AI lottery. Just consistent, brand-aligned multimedia generation with measurable ROI.
+            </p>
+          </div>
+          <!--[if gte mso 9]>
+            </v:textbox>
+          </v:rect>
+          <![endif]-->
+        </td>
+      </tr>
+    </table>
+    
+    <!-- Market Stats -->
+    <div class="stats-section">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-number">$90.99B</span>
+          <span class="stat-label">AI Market by 2035</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">60%</span>
+          <span class="stat-label">Agencies Using GenAI</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">3.7x</span>
+          <span class="stat-label">Average ROI</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">150+</span>
+          <span class="stat-label">Production APIs</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Benefits Section -->
+    <div class="benefits-section">
+      <h2 class="section-title">Why Mid-Sized Agencies Choose Our MCP Platform</h2>
+      <div class="benefits-grid">
+        <div class="benefit-item">
+          <div class="benefit-title">🔄 Production-Ready Integration</div>
+          <div class="benefit-description">Microsoft MCP with 150+ official servers including Google Drive, Slack, GitHub, and enterprise multimedia APIs.</div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-title">🎯 Measurable ROI</div>
+          <div class="benefit-description">Average 3.7x returns with 81% performance improvements. Top performers achieve 10.3x ROI.</div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-title">🛡️ Enterprise Security</div>
+          <div class="benefit-description">OAuth 2.0/OIDC patterns, token rotation, container sandboxing, and GDPR compliance.</div>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-title">⚡ Multimedia Generation</div>
+          <div class="benefit-description">Integrated video (Google Veo), voice (ElevenLabs), images (Stability AI), and content APIs.</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Social Proof -->
+    <div class="social-proof">
+      <div class="social-proof-title">Trusted by 25+ Mid-Sized Agencies | $4.2M+ in Documented AI ROI</div>
+      <div class="client-badges">
+        <span class="client-badge">Digital Growth Co.</span>
+        <span class="client-badge">Creative Collective</span>
+        <span class="client-badge">Scale Partners</span>
+        <span class="client-badge microsoft-badge">Microsoft Partner</span>
+      </div>
+    </div>
+    
+    <!-- CTA Section -->
+    <div class="cta-section">
+      <h2 class="cta-title">Strategic Partnerships Close January 31st</h2>
+      <p class="cta-description">
+        Join the exclusive network of agencies gaining 6-month competitive advantages through MCP orchestration.
+      </p>
+      <div class="cta-urgency">
+        ⏰ Only 6 partnership slots remain for Q1 2026
+      </div>
+      <a href="https://thisis-romar.github.io/diamond-heart-studios-website-v1/emblem-nlp-landing.html" class="cta-button">
+        Schedule Strategic Assessment<span class="cta-arrow">→</span>
+      </a>
+    </div>
+    
+    <!-- Footer -->
+    <div class="footer">
+      <p class="footer-text">
+        © 2025 emblem.io Strategic Partnership Program<br>
+        <a href="mailto:admin@emblem.io" class="footer-link">admin@emblem.io</a> | 
+        <a href="https://thisis-romar.github.io/diamond-heart-studios-website-v1/emblem-nlp-landing.html" class="footer-link">Partnership Details</a>
+      </p>
+      <p class="footer-text">
+        This email was sent to agencies interested in AI consulting partnerships. 
+        <a href="#" class="footer-link">Unsubscribe</a> | <a href="#" class="footer-link">Update Preferences</a>
+      </p>
+    </div>
+    
+  </div>
+</body>
+</html>

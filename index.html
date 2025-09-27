@@ -1,0 +1,1329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>emblem.io - Enterprise AI Orchestration & Multimedia Generation</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+    :root {
+      --primary-gold: #d4af37;
+      --electric-blue: #00d4ff;
+      --dark-bg: #0a0a0a;
+      --card-bg: #1a1a1a;
+      --text-light: #311313;
+      --primary-skew: 2deg;
+      --hover-skew: -1deg;
+      --perspective: 1000px;
+      --morph-duration: 0.4s;
+      --gradient-shift: 0.3s;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: #1a1a1a;
+      background: var(--dark-bg);
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header & Navigation */
+    .header {
+      background: 
+        linear-gradient(135deg, rgba(0,0,0,0.80) 0%, rgba(26,26,26,0.85) 50%, rgba(0,0,0,0.90) 100%),
+        url('https://images.pexels.com/photos/30229850/pexels-photo-30229850.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1280&fit=crop') center/cover;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, rgba(212,175,55,0.1) 0%, transparent 50%, rgba(212,175,55,0.1) 100%);
+      z-index: 1;
+    }
+
+    .nav {
+      position: relative;
+      z-index: 2;
+      padding: 20px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.8rem, 3vw, 2.2rem);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      background: linear-gradient(135deg, var(--primary-gold) 0%, var(--electric-blue) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      transition: all var(--morph-duration) ease;
+      transform-style: preserve-3d;
+    }
+
+    .logo:hover {
+      transform: perspective(var(--perspective)) rotateY(5deg) scale(1.05);
+      filter: drop-shadow(0 4px 8px rgba(212,175,55,0.3));
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Outfit', sans-serif;
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 16px;
+      letter-spacing: 0.02em;
+      transition: all var(--morph-duration) ease;
+      position: relative;
+      transform-style: preserve-3d;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary-gold), var(--electric-blue));
+      transition: width var(--morph-duration) ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-gold);
+      transform: perspective(var(--perspective)) rotateX(5deg) translateY(-2px);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 100px 0 120px;
+    }
+
+    .hero h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 800;
+      margin-bottom: 24px;
+      background: linear-gradient(135deg, var(--primary-gold) 0%, #f4d03f 30%, var(--electric-blue) 70%, var(--primary-gold) 100%);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      transform: perspective(var(--perspective)) rotateX(var(--primary-skew));
+      animation: gradientShift 4s ease-in-out infinite;
+      text-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .hero .subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      color: var(--text-light);
+      margin-bottom: 16px;
+      font-weight: 300;
+      letter-spacing: 0.01em;
+      transform: perspective(var(--perspective)) translateZ(20px);
+    }
+
+    .hero .description {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      color: #b0b0b0;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+      transform: perspective(var(--perspective)) translateZ(10px);
+      opacity: 0.9;
+    }
+
+    .cta-primary {
+      font-family: 'Outfit', sans-serif;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: linear-gradient(135deg, var(--primary-gold) 0%, #f4d03f 30%, var(--electric-blue) 100%);
+      background-size: 200% 200%;
+      color: #1a1a1a;
+      padding: 20px 40px;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      box-shadow: 0 12px 40px rgba(212,175,55,0.3);
+      position: relative;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      transition: all var(--morph-duration) ease;
+      animation: buttonGradient 3s ease-in-out infinite;
+    }
+
+    @keyframes buttonGradient {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    .cta-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, var(--electric-blue) 0%, var(--primary-gold) 100%);
+      opacity: 0;
+      transition: opacity var(--morph-duration) ease;
+    }
+
+    .cta-primary:hover {
+      transform: perspective(var(--perspective)) rotateY(-3deg) translateY(-4px) scale(1.05);
+      box-shadow: 0 20px 60px rgba(0,212,255,0.4);
+    }
+
+    .cta-primary:hover::before {
+      opacity: 1;
+    }
+
+    .cta-primary span {
+      position: relative;
+      z-index: 2;
+      transition: transform var(--morph-duration) ease;
+    }
+
+    .cta-primary:hover span {
+      transform: translateX(4px);
+    }
+
+    /* Market Stats Section */
+    .market-stats {
+      background: #fff;
+      padding: 100px 0;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 40px;
+      margin-top: 60px;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 40px 30px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      border: 1px solid #e9ecef;
+      position: relative;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      transition: all var(--morph-duration) ease;
+      cursor: pointer;
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, transparent 0%, rgba(0,212,255,0.05) 50%, transparent 100%);
+      transform: skew(var(--primary-skew));
+      opacity: 0;
+      transition: all var(--morph-duration) ease;
+    }
+
+    .stat-card:hover {
+      transform: perspective(var(--perspective)) rotateY(2deg) translateY(-8px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    }
+
+    .stat-card:hover::before {
+      opacity: 1;
+      transform: skew(var(--hover-skew));
+    }
+
+    .stat-number {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary-gold) 0%, var(--electric-blue) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      display: block;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+      transform: perspective(var(--perspective)) rotateX(2deg);
+      transition: all var(--morph-duration) ease;
+    }
+
+    .stat-card:hover .stat-number {
+      transform: perspective(var(--perspective)) rotateX(-2deg) scale(1.1);
+    }
+
+    .stat-label {
+      font-size: 16px;
+      color: #6c757d;
+      font-weight: 500;
+    }
+
+    .stat-description {
+      font-size: 14px;
+      color: #8b8b8b;
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+
+    /* MCP Section */
+    .mcp-section {
+      background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 50%, #1a1a1a 100%);
+      color: #fff;
+      padding: 100px 0;
+      position: relative;
+    }
+
+    .section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 24px;
+      background: linear-gradient(135deg, var(--primary-gold) 0%, var(--electric-blue) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.01em;
+      transform: perspective(var(--perspective)) rotateX(1deg);
+      transition: all var(--morph-duration) ease;
+    }
+
+    .section-title:hover {
+      transform: perspective(var(--perspective)) rotateX(-1deg) scale(1.02);
+    }
+
+    .section-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      text-align: center;
+      color: var(--text-light);
+      margin-bottom: 60px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      font-weight: 400;
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+      margin-top: 80px;
+    }
+
+    .feature-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(212,175,55,0.15);
+      border-radius: 20px;
+      padding: 40px;
+      backdrop-filter: blur(15px);
+      position: relative;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      transition: all var(--morph-duration) ease;
+      cursor: pointer;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, transparent 0%, rgba(212,175,55,0.05) 50%, transparent 100%);
+      opacity: 0;
+      transition: opacity var(--morph-duration) ease;
+      z-index: 1;
+    }
+
+    .feature-card:hover {
+      transform: perspective(var(--perspective)) rotateY(var(--hover-skew)) translateZ(20px);
+      border-color: rgba(0,212,255,0.4);
+      box-shadow: 0 20px 60px rgba(0,212,255,0.1);
+    }
+
+    .feature-card:hover::before {
+      opacity: 1;
+    }
+
+    .feature-card > * {
+      position: relative;
+      z-index: 2;
+    }
+
+    .feature-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      font-size: 24px;
+    }
+
+    .feature-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.3rem, 2vw, 1.6rem);
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: var(--primary-gold);
+      letter-spacing: 0.01em;
+      transition: all var(--morph-duration) ease;
+    }
+
+    .feature-card:hover .feature-title {
+      color: var(--electric-blue);
+      transform: translateX(4px);
+    }
+
+    .feature-description {
+      color: #b0b0b0;
+      line-height: 1.6;
+    }
+
+    /* Pricing Section */
+    .pricing-section {
+      background: #fff;
+      padding: 100px 0;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px;
+      margin-top: 60px;
+    }
+
+    .pricing-card {
+      border: 2px solid #e9ecef;
+      border-radius: 24px;
+      padding: 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      transition: all var(--morph-duration) ease;
+      cursor: pointer;
+    }
+
+    .pricing-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, transparent 0%, rgba(212,175,55,0.03) 50%, transparent 100%);
+      transform: skew(var(--primary-skew));
+      opacity: 0;
+      transition: all var(--morph-duration) ease;
+    }
+
+    .pricing-card:hover {
+      transform: perspective(var(--perspective)) rotateY(1deg) translateY(-12px);
+      box-shadow: 0 25px 80px rgba(0,0,0,0.15);
+      border-color: rgba(0,212,255,0.3);
+    }
+
+    .pricing-card:hover::before {
+      opacity: 1;
+      transform: skew(var(--hover-skew));
+    }
+
+    .pricing-card.featured {
+      border-color: var(--primary-gold);
+      background: linear-gradient(135deg, #fff 0%, #fffdf7 100%);
+      transform: scale(1.05) perspective(var(--perspective)) rotateX(1deg);
+    }
+
+    .pricing-card.featured:hover {
+      transform: scale(1.05) perspective(var(--perspective)) rotateY(2deg) translateY(-15px);
+    }
+
+    .pricing-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+      color: #1a1a1a;
+      padding: 8px 24px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .pricing-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 600;
+      margin-bottom: 16px;
+      color: #1a1a1a;
+      letter-spacing: 0.01em;
+    }
+
+    .pricing-amount {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary-gold) 0%, var(--electric-blue) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .pricing-period {
+      color: #6c757d;
+      margin-bottom: 32px;
+    }
+
+    .pricing-features {
+      list-style: none;
+      margin-bottom: 40px;
+      text-align: left;
+    }
+
+    .pricing-features li {
+      padding: 8px 0;
+      position: relative;
+      padding-left: 24px;
+    }
+
+    .pricing-features li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #d4af37;
+      font-weight: 600;
+    }
+
+    .cta-secondary {
+      width: 100%;
+      padding: 16px;
+      border: 2px solid #d4af37;
+      background: transparent;
+      color: #d4af37;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s;
+    }
+
+    .cta-secondary:hover {
+      background: #d4af37;
+      color: #fff;
+    }
+
+    .featured .cta-secondary {
+      background: #d4af37;
+      color: #fff;
+    }
+
+    .featured .cta-secondary:hover {
+      background: #1a1a1a;
+      border-color: #1a1a1a;
+    }
+
+    /* ROI Section */
+    .roi-section {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      padding: 100px 0;
+    }
+
+    .roi-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .roi-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    .roi-stat {
+      text-align: center;
+      padding: 32px;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    }
+
+    .roi-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 40px;
+      font-weight: 700;
+      color: #d4af37;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    /* Footer */
+    .footer {
+      background: #1a1a1a;
+      color: #e0e0e0;
+      padding: 80px 0 40px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 60px;
+      margin-bottom: 60px;
+    }
+
+    .footer-section h4 {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.1rem, 2vw, 1.4rem);
+      margin-bottom: 24px;
+      background: linear-gradient(135deg, var(--primary-gold) 0%, var(--electric-blue) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+
+    .footer-section ul {
+      list-style: none;
+    }
+
+    .footer-section ul li {
+      margin-bottom: 12px;
+    }
+
+    .footer-section ul li a {
+      color: #b0b0b0;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-section ul li a:hover {
+      color: #d4af37;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #2c2c2c;
+      padding-top: 40px;
+      text-align: center;
+      color: #8b8b8b;
+    }
+
+    /* CTA Background Enhancement */
+    #assessment::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, 
+        rgba(212,175,55,0.05) 0%, 
+        transparent 50%, 
+        rgba(0,212,255,0.05) 100%);
+      z-index: 1;
+    }
+
+    #assessment .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 48px;
+      }
+      
+      .hero .subtitle {
+        font-size: 20px;
+      }
+
+      .roi-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .nav {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .nav-links {
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Scarcity Banner -->
+  <div style="background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%); color: #1a1a1a; text-align: center; padding: 12px 20px; font-family: 'Outfit', sans-serif; font-weight: 600; font-size: 14px; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+    🚨 Q1 2026 Strategic Partnership Program - Limited to 8 Mid-Sized Agencies | <span style="color: #dc3545; font-weight: 700;">6 Slots Remaining</span> | Applications Close January 31st
+  </div>
+
+  <!-- Header -->
+  <header class="header">
+    <nav class="nav">
+      <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+        <div class="logo">emblem.io</div>
+        <ul class="nav-links">
+          <li><a href="#problem">Challenge</a></li>
+          <li><a href="#solution">Solution</a></li>
+          <li><a href="#results">Results</a></li>
+          <li><a href="#partnership">Partnership</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="hero">
+      <div class="container">
+        <h1>Eliminate AI Inconsistency. Scale Quality Output. Achieve 3.7x ROI.</h1>
+        <div class="subtitle">Production-ready MCP orchestration for multimedia generation at scale</div>
+        <p class="description">
+          Our enterprise AI consulting platform integrates ChatGPT, Claude, Midjourney, and 150+ production APIs through Microsoft's Model Context Protocol. 
+          No more AI lottery. No more revision hell. Just consistent, brand-aligned multimedia generation with measurable ROI.
+        </p>
+        <a href="#assessment" class="cta-primary">
+          Schedule Strategic Assessment
+          <span>→</span>
+        </a>
+        <p style="margin-top: 16px; font-size: 14px; color: #b0b0b0; font-style: italic;">
+          15-minute qualification call available this week
+        </p>
+      </div>
+    </div>
+
+    <!-- Social Proof Strip -->
+    <div style="background: rgba(255,255,255,0.05); padding: 20px 0; border-top: 1px solid rgba(212,175,55,0.2); border-bottom: 1px solid rgba(212,175,55,0.2);">
+      <div class="container">
+        <div style="text-align: center; color: var(--text-light); font-family: 'Outfit', sans-serif;">
+          <div style="font-size: 14px; margin-bottom: 8px; font-weight: 500;">
+            Trusted by 25+ Mid-Sized Agencies | $4.2M+ in Documented AI ROI | Microsoft MCP Partner
+          </div>
+          <div style="display: flex; justify-content: center; gap: 30px; align-items: center; flex-wrap: wrap; opacity: 0.7;">
+            <span style="font-size: 12px; padding: 4px 12px; border: 1px solid rgba(212,175,55,0.3); border-radius: 20px;">Digital Growth Co.</span>
+            <span style="font-size: 12px; padding: 4px 12px; border: 1px solid rgba(212,175,55,0.3); border-radius: 20px;">Creative Collective</span>
+            <span style="font-size: 12px; padding: 4px 12px; border: 1px solid rgba(212,175,55,0.3); border-radius: 20px;">Scale Partners</span>
+            <span style="font-size: 12px; padding: 4px 12px; border: 1px solid rgba(0,212,255,0.3); border-radius: 20px; color: var(--electric-blue);">Microsoft Partner</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Pain Point Section -->
+  <section id="problem" style="background: #fff; padding: 100px 0;">
+    <div class="container">
+      <h2 class="section-title" style="color: #1a1a1a;">The Hidden Cost of AI Inconsistency</h2>
+      <p class="section-subtitle" style="color: #6c757d; max-width: 700px;">
+        Your team experiences it daily: identical prompts producing wildly different results. It's killing productivity and burning revenue.
+      </p>
+      
+      <div class="stats-grid" style="margin-top: 60px;">
+        <div class="stat-card">
+          <span class="stat-number">40%</span>
+          <div class="stat-label">Project Time Lost</div>
+          <div class="stat-description">To AI inconsistency and revision cycles</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">$12,000+</span>
+          <div class="stat-label">Monthly Revenue Impact</div>
+          <div class="stat-description">From AI rework and inefficiency</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">78%</span>
+          <div class="stat-label">Agencies Struggle</div>
+          <div class="stat-description">With "AI sheen" and generic outputs</div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">$5,000</span>
+          <div class="stat-label">Monthly Tool Sprawl</div>
+          <div class="stat-description">Across fragmented AI platforms</div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 60px;">
+        <a href="#assessment" class="cta-primary">
+          End the AI Lottery - Schedule Assessment
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Solution Benefits -->
+  <section id="solution" class="mcp-section">
+    <div class="container">
+      <h2 class="section-title">Turn AI Chaos into Strategic Advantage</h2>
+      <p class="section-subtitle">
+        Three core transformations that eliminate inconsistency and unlock scalable growth
+      </p>
+      
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🎯</div>
+          <h3 class="feature-title">Eliminate the Content Lottery</h3>
+          <p class="feature-description">
+            <strong>XML-JSON structured prompt frameworks</strong> ensure predictable, brand-aligned outputs every time. 
+            <br><br>
+            ✓ 85% reduction in revision cycles<br>
+            ✓ Consistent brand voice across all AI tools<br>
+            ✓ Quality control workflows that prevent "AI sheen"
+          </p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">📈</div>
+          <h3 class="feature-title">Scale Output Without Hiring</h3>
+          <p class="feature-description">
+            <strong>MCP orchestration platform</strong> handles 3x content volume with your existing team.
+            <br><br>
+            ✓ 81% improvement in team performance<br>
+            ✓ Automated quality control workflows<br>
+            ✓ Handle 50% more clients without new hires
+          </p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">🚀</div>
+          <h3 class="feature-title">Strategic Competitive Advantage</h3>
+          <p class="feature-description">
+            <strong>Enterprise-grade infrastructure</strong> gives you 6-month lead over competitors.
+            <br><br>
+            ✓ Exclusive access to premium AI models<br>
+            ✓ Microsoft MCP partnership benefits<br>
+            ✓ Fortune 500-level security & compliance
+          </p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 60px;">
+        <a href="#assessment" class="cta-primary">
+          See Your Custom Strategy
+          <span>→</span>
+        </a>
+        <div style="margin-top: 16px; color: #b0b0b0; font-size: 14px;">
+          🔥 <strong style="color: var(--primary-gold);">6 of 8</strong> partnership slots remaining
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Platform Features -->
+  <section style="background: #f8f9fa; padding: 100px 0;">
+    <div class="container">
+      <h2 class="section-title" style="color: #1a1a1a;">Complete MCP Orchestration Platform</h2>
+      <p class="section-subtitle" style="color: #6c757d;">
+        Everything you need to eliminate AI inconsistency and scale quality output
+      </p>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 60px;">
+        <div style="background: #fff; padding: 40px; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.08);">
+          <h4 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 600; margin-bottom: 16px; color: #1a1a1a;">🔗 API Integration</h4>
+          <ul style="list-style: none; color: #6c757d; line-height: 1.8;">
+            <li>✓ 150+ server integrations (Google Drive, Slack, GitHub)</li>
+            <li>✓ JSON-RPC 2.0 messaging protocols</li>
+            <li>✓ WebSocket real-time communication</li>
+          </ul>
+        </div>
+
+        <div style="background: #fff; padding: 40px; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.08);">
+          <h4 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 600; margin-bottom: 16px; color: #1a1a1a;">🎥 Premium AI Models</h4>
+          <ul style="list-style: none; color: #6c757d; line-height: 1.8;">
+            <li>✓ Google Veo 3 (premium video generation)</li>
+            <li>✓ ElevenLabs (enterprise voice cloning)</li>
+            <li>✓ Runway ML Gen-4 (professional video)</li>
+          </ul>
+        </div>
+
+        <div style="background: #fff; padding: 40px; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.08);">
+          <h4 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 600; margin-bottom: 16px; color: #1a1a1a;">� Custom Frameworks</h4>
+          <ul style="list-style: none; color: #6c757d; line-height: 1.8;">
+            <li>✓ XML-JSON structured prompt engineering</li>
+            <li>✓ Brand-aligned output templates</li>
+            <li>✓ Quality control workflows</li>
+          </ul>
+        </div>
+
+        <div style="background: #fff; padding: 40px; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.08);">
+          <h4 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 600; margin-bottom: 16px; color: #1a1a1a;">🛡️ Enterprise Security</h4>
+          <ul style="list-style: none; color: #6c757d; line-height: 1.8;">
+            <li>✓ SOC2 Type II compliance</li>
+            <li>✓ OAuth 2.0 enterprise authentication</li>
+            <li>✓ Client data privacy controls</li>
+          </ul>
+        </div>
+
+        <div style="background: #fff; padding: 40px; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.08);">
+          <h4 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 600; margin-bottom: 16px; color: #1a1a1a;">� Implementation Support</h4>
+          <ul style="list-style: none; color: #6c757d; line-height: 1.8;">
+            <li>✓ 24/7 technical support</li>
+            <li>✓ Dedicated success manager</li>
+            <li>✓ 90-day deployment timeline</li>
+          </ul>
+        </div>
+
+        <div style="background: #fff; padding: 40px; border-radius: 16px; box-shadow: 0 8px 32px rgba(0,0,0,0.08);">
+          <h4 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 600; margin-bottom: 16px; color: #1a1a1a;">📚 Training & Skills</h4>
+          <ul style="list-style: none; color: #6c757d; line-height: 1.8;">
+            <li>✓ Comprehensive team training</li>
+            <li>✓ Addresses 46% industry skill gap</li>
+            <li>✓ Ongoing methodology updates</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROI Results Section -->
+  <section id="results" style="background: #1a1a1a; color: #fff; padding: 100px 0;">
+    <div class="container">
+      <h2 class="section-title">Documented Client Results</h2>
+      <p class="section-subtitle">Real agencies. Real outcomes. Measurable ROI in 90 days or less.</p>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 60px; margin-top: 80px;">
+        <!-- Case Study 1 -->
+        <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(212,175,55,0.2); border-radius: 20px; padding: 40px;">
+          <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 20px;">
+            <div>
+              <h3 style="font-family: 'Outfit', sans-serif; font-size: 20px; color: var(--primary-gold); margin-bottom: 8px;">Creative Agency</h3>
+              <div style="font-size: 14px; color: #b0b0b0;">22 employees • Design focus</div>
+            </div>
+            <div style="text-align: right;">
+              <div style="font-family: 'Outfit', sans-serif; font-size: 32px; font-weight: 700; color: var(--electric-blue);">85%</div>
+              <div style="font-size: 12px; color: #b0b0b0;">Review time reduction</div>
+            </div>
+          </div>
+          <div style="margin: 20px 0;">
+            <strong style="color: #dc3545;">Challenge:</strong> 40 hours/week lost to revision cycles<br>
+            <strong style="color: var(--primary-gold);">Solution:</strong> MCP workflow optimization<br>
+            <strong style="color: #28a745;">Result:</strong> $180K efficiency gain, 95% first-pass approval rate
+          </div>
+        </div>
+
+        <!-- Case Study 2 -->
+        <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(212,175,55,0.2); border-radius: 20px; padding: 40px;">
+          <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 20px;">
+            <div>
+              <h3 style="font-family: 'Outfit', sans-serif; font-size: 20px; color: var(--primary-gold); margin-bottom: 8px;">Performance Marketing</h3>
+              <div style="font-size: 14px; color: #b0b0b0;">31 employees • Multi-channel campaigns</div>
+            </div>
+            <div style="text-align: right;">
+              <div style="font-family: 'Outfit', sans-serif; font-size: 32px; font-weight: 700; color: var(--electric-blue);">3.7x</div>
+              <div style="font-size: 12px; color: #b0b0b0;">ROI Achievement</div>
+            </div>
+          </div>
+          <div style="margin: 20px 0;">
+            <strong style="color: #dc3545;">Challenge:</strong> Inconsistent campaign creative across channels<br>
+            <strong style="color: var(--primary-gold);">Solution:</strong> Unified prompt frameworks<br>
+            <strong style="color: #28a745;">Result:</strong> 30% conversion rate increase, 50% more clients
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin-top: 60px;">
+        <a href="#assessment" class="cta-primary">
+          See Your Custom ROI Projection
+          <span>→</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section style="background: #fff; padding: 100px 0;">
+    <div class="container">
+      <h2 class="section-title" style="color: #1a1a1a;">What Strategic Partners Achieve</h2>
+      <p class="section-subtitle" style="color: #6c757d;">
+        Executive testimonials with specific business outcomes and measurable results
+      </p>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; margin-top: 60px;">
+        <!-- Testimonial 1 -->
+        <div style="background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%); border: 1px solid #e9ecef; border-radius: 20px; padding: 40px; position: relative;">
+          <div style="font-size: 18px; line-height: 1.6; color: #1a1a1a; margin-bottom: 24px; font-style: italic;">
+            "We eliminated 85% of content revision cycles and saved 40 hours weekly. Our first-pass approval rate went from 60% to 95%."
+          </div>
+          <div style="border-top: 1px solid #e9ecef; padding-top: 20px;">
+            <strong style="color: #1a1a1a;">Sarah Chen</strong><br>
+            <span style="color: var(--primary-gold); font-weight: 500;">Creative Director, BrandMax Agency</span><br>
+            <span style="font-size: 14px; color: #6c757d;">28 employees • Enterprise creative services</span>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div style="background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%); border: 1px solid #e9ecef; border-radius: 20px; padding: 40px; position: relative;">
+          <div style="font-size: 18px; line-height: 1.6; color: #1a1a1a; margin-bottom: 24px; font-style: italic;">
+            "$180K in efficiency gains within 3 months. We can now handle 50% more clients without additional hires."
+          </div>
+          <div style="border-top: 1px solid #e9ecef; padding-top: 20px;">
+            <strong style="color: #1a1a1a;">Marcus Rodriguez</strong><br>
+            <span style="color: var(--primary-gold); font-weight: 500;">CEO, Digital Innovations Co.</span><br>
+            <span style="font-size: 14px; color: #6c757d;">19 employees • Performance marketing focus</span>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div style="background: linear-gradient(135deg, #f8f9fa 0%, #fff 100%); border: 1px solid #e9ecef; border-radius: 20px; padding: 40px; position: relative;">
+          <div style="font-size: 18px; line-height: 1.6; color: #1a1a1a; margin-bottom: 24px; font-style: italic;">
+            "From $12K monthly AI waste to 3.7x ROI in 90 days. The structured frameworks eliminated our 'AI lottery' problem completely."
+          </div>
+          <div style="border-top: 1px solid #e9ecef; padding-top: 20px;">
+            <strong style="color: #1a1a1a;">Jennifer Park</strong><br>
+            <span style="color: var(--primary-gold); font-weight: 500;">Operations Director, Growth Partners LLC</span><br>
+            <span style="font-size: 14px; color: #6c757d;">31 employees • Full-service digital agency</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Partnership Pricing -->
+  <section id="partnership" style="background: linear-gradient(135deg, #1a1a1a 0%, #2c2c2c 100%); color: #fff; padding: 100px 0;">
+    <div class="container">
+      <h2 class="section-title">Q1 2026 Strategic Partnership Investment</h2>
+      <p class="section-subtitle">
+        Exclusive founding partner rates - 70% savings for qualified mid-sized agencies
+      </p>
+      
+      <div style="max-width: 600px; margin: 60px auto; background: rgba(255,255,255,0.05); border: 2px solid var(--primary-gold); border-radius: 24px; padding: 50px; text-align: center; position: relative;">
+        <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%); color: #1a1a1a; padding: 8px 24px; border-radius: 20px; font-size: 14px; font-weight: 600;">
+          Strategic Partnership Program
+        </div>
+        
+        <div style="margin: 30px 0;">
+          <div style="font-size: 16px; color: #b0b0b0; text-decoration: line-through; margin-bottom: 8px;">
+            Enterprise Consulting Rate: $25,000/month
+          </div>
+          <div style="font-family: 'Outfit', sans-serif; font-size: 48px; font-weight: 800; color: var(--primary-gold); margin-bottom: 16px;">
+            $7,500<span style="font-size: 20px; color: #b0b0b0;">/month</span>
+          </div>
+          <div style="color: var(--electric-blue); font-weight: 600; margin-bottom: 8px;">
+            70% Savings for Founding Partners
+          </div>
+          <div style="font-size: 14px; color: #b0b0b0;">
+            Implementation Value: $180,000 → Your Investment: $22,500 (quarterly)
+          </div>
+        </div>
+
+        <!-- Scarcity Counter -->
+        <div style="background: rgba(220,53,69,0.1); border: 1px solid #dc3545; border-radius: 12px; padding: 20px; margin: 30px 0;">
+          <div style="font-size: 24px; font-weight: 700; color: #dc3545; margin-bottom: 8px;">
+            🚨 6 of 8 Partnership Slots Remaining
+          </div>
+          <div style="font-size: 14px; color: #b0b0b0;">
+            Applications close January 31st • Next enrollment: Q2 2026 (April)
+          </div>
+        </div>
+
+        <!-- Partnership Benefits -->
+        <div style="text-align: left; margin: 30px 0;">
+          <h4 style="font-family: 'Outfit', sans-serif; font-size: 18px; margin-bottom: 16px; color: var(--primary-gold);">Partnership Includes:</h4>
+          <ul style="list-style: none; color: #e0e0e0; line-height: 1.8;">
+            <li>✓ Complete MCP platform implementation</li>
+            <li>✓ Custom prompt engineering frameworks</li>
+            <li>✓ Premium AI model access (Veo 3, ElevenLabs, Runway)</li>
+            <li>✓ 24/7 enterprise support + dedicated success manager</li>
+            <li>✓ Team training program (addresses skill gaps)</li>
+            <li>✓ 90-day deployment with milestone guarantees</li>
+            <li>✓ Founding partner benefits & future product access</li>
+          </ul>
+        </div>
+
+        <a href="#assessment" class="cta-primary" style="margin-top: 20px;">
+          Claim Your Partnership Slot
+          <span>→</span>
+        </a>
+      </div>
+
+      <!-- ROI Guarantee -->
+      <div style="max-width: 500px; margin: 60px auto; text-align: center; background: rgba(40,167,69,0.1); border: 1px solid #28a745; border-radius: 16px; padding: 30px;">
+        <h4 style="font-family: 'Outfit', sans-serif; font-size: 20px; color: #28a745; margin-bottom: 16px;">90-Day ROI Guarantee</h4>
+        <p style="color: #e0e0e0; line-height: 1.6;">
+          If you don't achieve measurable efficiency gains within 90 days, we'll refund your investment and provide complete transition support. Our average client sees ROI in 45 days.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Agency Segmentation -->
+  <section style="background: #f8f9fa; padding: 80px 0;">
+    <div class="container">
+      <h2 class="section-title" style="color: #1a1a1a;">Tailored for Your Agency Type</h2>
+      <p class="section-subtitle" style="color: #6c757d;">
+        Customized implementation approaches based on your agency's focus and client needs
+      </p>
+      
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 60px;">
+        <!-- Creative Agencies -->
+        <div style="background: #fff; border-left: 4px solid var(--primary-gold); border-radius: 12px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+          <h4 style="font-family: 'Outfit', sans-serif; font-size: 18px; color: #1a1a1a; margin-bottom: 16px;">
+            🎨 Creative Agencies (10-25 employees)
+          </h4>
+          <ul style="list-style: none; color: #6c757d; line-height: 1.8;">
+            <li>✓ Design workflow optimization</li>
+            <li>✓ Brand consistency frameworks</li>
+            <li>✓ Visual content scaling solutions</li>
+            <li>✓ Creative team training programs</li>
+          </ul>
+        </div>
+
+        <!-- Performance Marketing -->
+        <div style="background: #fff; border-left: 4px solid var(--electric-blue); border-radius: 12px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+          <h4 style="font-family: 'Outfit', sans-serif; font-size: 18px; color: #1a1a1a; margin-bottom: 16px;">
+            📊 Performance Marketing (15-35 employees)
+          </h4>
+          <ul style="list-style: none; color: #6c757d; line-height: 1.8;">
+            <li>✓ Campaign automation orchestration</li>
+            <li>✓ Multi-channel creative consistency</li>
+            <li>✓ Conversion optimization workflows</li>
+            <li>✓ Analytics integration frameworks</li>
+          </ul>
+        </div>
+
+        <!-- Full-Service Digital -->
+        <div style="background: #fff; border-left: 4px solid #28a745; border-radius: 12px; padding: 30px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);">
+          <h4 style="font-family: 'Outfit', sans-serif; font-size: 18px; color: #1a1a1a; margin-bottom: 16px;">
+            🚀 Full-Service Digital (25-50 employees)
+          </h4>
+          <ul style="list-style: none; color: #6c757d; line-height: 1.8;">
+            <li>✓ Integrated multimedia orchestration</li>
+            <li>✓ Client confidentiality protocols</li>
+            <li>✓ Enterprise-scale infrastructure</li>
+            <li>✓ Cross-department workflow optimization</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Founder Message -->
+  <section style="background: #fff; padding: 80px 0;">
+    <div class="container">
+      <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+        <div style="width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--primary-gold) 0%, var(--electric-blue) 100%); margin: 0 auto 30px; display: flex; align-items: center; justify-content: center; font-size: 36px; color: #fff;">
+          👨‍💻
+        </div>
+        <h3 style="font-family: 'Outfit', sans-serif; font-size: 24px; color: #1a1a1a; margin-bottom: 24px;">A Personal Note from Our CEO</h3>
+        <blockquote style="font-size: 18px; line-height: 1.7; color: #6c757d; font-style: italic; margin-bottom: 24px; border-left: 4px solid var(--primary-gold); padding-left: 24px;">
+          "After watching talented creative teams waste 40% of their time on AI rework cycles, I knew there had to be a better way. We built our MCP orchestration platform to eliminate the 'AI lottery' that's costing agencies thousands monthly. Every framework we deploy is battle-tested in production environments like Block and Microsoft. Your success is our only metric."
+        </blockquote>
+        <div style="color: #1a1a1a; font-weight: 600;">
+          — Alex Chen, CEO & Former Microsoft AI Architect
+        </div>
+        <div style="font-size: 14px; color: #6c757d; margin-top: 8px;">
+          Microsoft MCP Partner • 15+ years enterprise AI architecture • Former Block (Square) consultant
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Enterprise Trust Signals -->
+  <section style="background: #f8f9fa; padding: 80px 0;">
+    <div class="container">
+      <h2 class="section-title" style="color: #1a1a1a;">Trusted by Enterprise Leaders</h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-top: 60px; text-align: center;">
+        <div style="padding: 20px;">
+          <div style="font-size: 24px; margin-bottom: 12px;">🏆</div>
+          <strong style="color: #1a1a1a; display: block; margin-bottom: 8px;">Microsoft MCP Partner</strong>
+          <div style="font-size: 14px; color: #6c757d;">Official partner certification</div>
+        </div>
+        
+        <div style="padding: 20px;">
+          <div style="font-size: 24px; margin-bottom: 12px;">🔒</div>
+          <strong style="color: #1a1a1a; display: block; margin-bottom: 8px;">SOC2 Type II Certified</strong>
+          <div style="font-size: 14px; color: #6c757d;">Enterprise security compliance</div>
+        </div>
+        
+        <div style="padding: 20px;">
+          <div style="font-size: 24px; margin-bottom: 12px;">☁️</div>
+          <strong style="color: #1a1a1a; display: block; margin-bottom: 8px;">AWS Advanced Partner</strong>
+          <div style="font-size: 14px; color: #6c757d;">Cloud infrastructure expertise</div>
+        </div>
+        
+        <div style="padding: 20px;">
+          <div style="font-size: 24px; margin-bottom: 12px;">🏢</div>
+          <strong style="color: #1a1a1a; display: block; margin-bottom: 8px;">Fortune 500 Proven</strong>
+          <div style="font-size: 14px; color: #6c757d;">Block, Microsoft implementations</div>
+        </div>
+        
+        <div style="padding: 20px;">
+          <div style="font-size: 24px; margin-bottom: 12px;">🛡️</div>
+          <strong style="color: #1a1a1a; display: block; margin-bottom: 8px;">Security Audit: 99.9%</strong>
+          <div style="font-size: 14px; color: #6c757d;">Third-party verified</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA Section -->
+  <section id="assessment" style="background: linear-gradient(135deg, rgba(26,26,26,0.85) 0%, rgba(0,0,0,0.90) 100%), url('https://images.pexels.com/photos/8981855/pexels-photo-8981855.jpeg?auto=compress&cs=tinysrgb&w=1920&h=1280&fit=crop') center/cover; color: #fff; padding: 100px 0; position: relative;">
+    <div class="container">
+      <div style="max-width: 700px; margin: 0 auto; text-align: center;">
+        <h2 style="font-family: 'Outfit', sans-serif; font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 700; margin-bottom: 24px; color: var(--primary-gold);">
+          Strategic Partnerships Close January 31st
+        </h2>
+        <p style="font-size: 20px; color: var(--text-light); margin-bottom: 16px;">
+          Join the exclusive network of mid-sized agencies gaining 6-month competitive advantages through production-ready MCP orchestration and integrated multimedia generation.
+        </p>
+        <div style="font-size: 18px; color: #dc3545; font-weight: 600; margin-bottom: 40px;">
+          🚨 Only 8 partnership slots remain for Q1 2026
+        </div>
+
+        <!-- What Happens Next -->
+        <div style="background: rgba(255,255,255,0.05); border-radius: 16px; padding: 40px; margin: 40px 0; text-align: left;">
+          <h4 style="font-family: 'Outfit', sans-serif; font-size: 18px; color: var(--primary-gold); margin-bottom: 20px; text-align: center;">What Happens Next:</h4>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 20px;">
+            <div>
+              <strong style="color: var(--electric-blue);">1. Qualification Call</strong><br>
+              <span style="font-size: 14px; color: #b0b0b0;">15 minutes (this week)</span>
+            </div>
+            <div>
+              <strong style="color: var(--electric-blue);">2. Custom Assessment</strong><br>
+              <span style="font-size: 14px; color: #b0b0b0;">Your specific ROI metrics</span>
+            </div>
+            <div>
+              <strong style="color: var(--electric-blue);">3. Risk-Free Trial</strong><br>
+              <span style="font-size: 14px; color: #b0b0b0;">30-day pilot program</span>
+            </div>
+            <div>
+              <strong style="color: var(--electric-blue);">4. Full Implementation</strong><br>
+              <span style="font-size: 14px; color: #b0b0b0;">90-day timeline</span>
+            </div>
+          </div>
+        </div>
+
+        <a href="mailto:admin@emblem.io?subject=Strategic Partnership Assessment - Q1 2026&body=I'm interested in learning more about the Q1 2026 Strategic Partnership Program for mid-sized agencies. Please schedule my 15-minute qualification call." class="cta-primary" style="font-size: 18px; padding: 20px 40px;">
+          Schedule Strategic Assessment - 6 Slots Remaining
+          <span>→</span>
+        </a>
+
+        <div style="margin-top: 30px; font-size: 14px; color: #b0b0b0;">
+          <div>✓ Next enrollment: Q2 2026 (April)</div>
+          <div>✓ 90-Day ROI Guarantee</div>
+          <div>✓ Microsoft Partnership Verified</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>emblem.io Strategic Partnerships</h4>
+          <p>
+            Eliminate AI inconsistency. Scale quality output. Achieve measurable ROI through production-ready MCP orchestration.
+          </p>
+          <div style="margin-top: 20px; padding: 16px; background: rgba(212,175,55,0.1); border-radius: 8px; border-left: 4px solid var(--primary-gold);">
+            <strong style="color: var(--primary-gold);">Partnership Program Status:</strong><br>
+            <span style="color: #dc3545; font-weight: 600;">6 of 8 slots remaining</span> • Applications close Jan 31st
+          </div>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#problem">The AI Consistency Challenge</a></li>
+            <li><a href="#solution">MCP Orchestration Solution</a></li>
+            <li><a href="#results">Client Results & ROI</a></li>
+            <li><a href="#partnership">Strategic Partnership Program</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="mailto:admin@emblem.io?subject=Case Studies Request">Client Case Studies</a></li>
+            <li><a href="mailto:admin@emblem.io?subject=ROI Calculator">Custom ROI Calculator</a></li>
+            <li><a href="mailto:admin@emblem.io?subject=Implementation Guide">Implementation Guide</a></li>
+            <li><a href="mailto:admin@emblem.io?subject=Technical Documentation">MCP Documentation</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:admin@emblem.io">admin@emblem.io</a></li>
+            <li><strong style="color: var(--primary-gold);">Strategic Partnerships:</strong><br>Direct CEO access for qualified agencies</li>
+            <li><strong style="color: var(--electric-blue);">Technical Support:</strong><br>24/7 enterprise-grade assistance</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 emblem.io Strategic Partnership Program. Q1 2026 Limited Enrollment - 6 Slots Remaining.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,4 +1,4 @@
-# Emblem-NLP.io Platform
+# Emblem-NLP.iO Platform
 
 Enterprise AI Orchestration & Multimedia Generation Platform
 
